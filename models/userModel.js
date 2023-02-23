@@ -3,6 +3,7 @@ const schema = mongoose.Schema;
 const date = new Date(Date.now());
 const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
 const dateString = date.toLocaleString('en-US', options).replace(/,/g, '');
+console.log(dateString)
 
 
 const userCollection = new schema({
