@@ -43,10 +43,25 @@ footer{
 section{
     padding: 20px;
 }
-input{
+
+#post{
     margin: 10px;
     width: 98%;
     height: 130px;
+    padding: 5px;
+    display: inline-block;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 10px 10px 10px 10px;
+}
+.user-form{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+.user-input{
+    margin: 10px;
+    width: 250px;
     padding: 5px;
     display: inline-block;
     background-color: white;
@@ -61,4 +76,14 @@ input{
     background-color: dodgerblue;
     border: 3px solid black;
     border-radius: 10px 10px 10px 10px;
+}
+.user-list{
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-bottom: 2px solid black;
+}
+.user-list-post{
+    margin: 25px;
 }

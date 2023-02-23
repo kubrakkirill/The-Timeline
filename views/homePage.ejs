@@ -12,24 +12,39 @@
 <header>
     <div class="logo">The Timeline</div>
     <div class="header-path header-style">
-        <p>http://localhost</p>
+        <p>http://localhost: 3000</p>
     </div>
-    <div class="header-search header-style">Search</div>
+    <div class="header-search header-style">Search...</div>
 </header>
 <section>
     <form method="post" action="/addPost">
-        <label for="text">Post a message</label>
+        <span  class="user-form">
+            <span>
+                <label for="email" class="user-label">Enter your Email</label>
+                <br>
+                <input type="email" name="email" id="email" class="user-input">
+            </span>
+            <span>
+                <label for="password" class="user-label">Enter your Password</label>
+                <br>
+                <input type="password" name="password" id="password" class="user-input">
+            </span>
+        </span>
         <br>
-        <input type="text" name="text" id="text">
+        <label for="post" class="post-label">Post a message</label>
+        <br>
+        <input type="text" name="post" id="post">
         <br>
         <button id="btnPost">Post a message</button>
     </form>
-    <% if(err) { %>
-        <h5 id="error"><%= err %></h5>
-    <% } %>
-    <% if (user) { %>
-        <div id="result"><%= user.text %></div>
-    <% } %>
+    <ul>
+        <% for (let i=0; i<users.length;i++) {%>
+        <li class="user-list">
+            <p><%= users[i].email %> - <%= users[i].created_at %></p>
+            <p class="user-list-post"><%= users[i].post %></p>
+        </li>
+        <%}%>
+    </ul>
 </section>
 <footer>
     <p>Created by Kyrylo Kubrak</p>

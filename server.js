@@ -1,20 +1,17 @@
 const express = require('express');
+require('./config/mongoose')
 const app = express();
-const bodyParser = require('body-parser')
-const pagesController = require('./controller/pages')
+const route = require('./config/route');
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
-app.use(bodyParser.json())
+app.use(route);
 
 app.use(express.static('public'));
 
-app.get('/', pagesController.homePage);
-app.post('/addPost', pagesController.addNewPost);
+let PORT = 3300;
+app.listen(PORT, () => console.log(`The Timeline is on ${PORT}`));
 
-let PORT = 3000;
-app.listen(PORT, () => console.log(`The Timeline is on ${PORT}`))
-
-//xefsyp-9xavvi-despiX
