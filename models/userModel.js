@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
+const date = new Date(Date.now());
+const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+const dateString = date.toLocaleString('en-US', options).replace(/,/g, '');
+
 
 const userCollection = new schema({
    email: {
@@ -16,7 +20,7 @@ const userCollection = new schema({
    },
    created_at: {
        type: Date,
-       default: Date.now(),
+       default: dateString,
    }
 });
 
