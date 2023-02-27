@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel.js')
+const {request, response} = require("express");
 
 const getPost = (request, response) => {
     userModel.find()
@@ -23,14 +24,13 @@ const addPost = (request, response) => {
 }
 const deletePost = (req, res) => {
     const postId = req.body.postId;
-
     userModel.findByIdAndRemove(postId, (err) => {
         if (err) {
             console.log(err);
             res.status(500).send('Error deleting post');
         } else {
             console.log('Post deleted');
-            res.redirect('/');
+            res.redirect('/')
         }
     });
 };
@@ -53,5 +53,5 @@ const deletePost = (req, res) => {
 module.exports = {
     getPost,
     addPost,
-    deletePost
+    deletePost,
 }
