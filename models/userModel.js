@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
-const date = new Date(Date.now());
-const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-const dateString = date.toLocaleString('en-US', options).replace(/,/g, '');
-console.log(dateString)
+const moment = require('moment');
 
+const schema = mongoose.Schema;
 
 const userCollection = new schema({
+    postId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    },
    email: {
        type: String,
        required: true,
@@ -21,8 +22,11 @@ const userCollection = new schema({
    },
    created_at: {
        type: Date,
-       default: dateString,
+       default: Date.now,
+       get: function (createdAt) {
+           return moment(createdAt).format('MMMM Do YYYY, h:mm:ss a');
+       }
    }
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model('User', userCollection);

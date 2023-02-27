@@ -12,6 +12,6 @@ app.use(route);
 
 app.use(express.static('public'));
 
-let PORT = 3500;
+let PORT = 3700;
 app.listen(PORT, () => console.log(`The Timeline is on ${PORT}`));
 

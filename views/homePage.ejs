@@ -38,12 +38,16 @@
         <button id="btnPost">Post a message</button>
     </form>
     <ul>
-        <% for (let i=0; i<users.length;i++) {%>
-        <li class="user-list">
-            <p><%= users[i].email %> - <%= users[i].created_at %></p>
-            <p class="user-list-post"><%= users[i].post %></p>
-        </li>
-        <%}%>
+        <% users.sort(function(a, b) { return new Date(b.created_at) - new Date(a.created_at) }).forEach(function(users) { %>
+            <li class="user-list">
+                <p><%= users.email %> - <%= users.created_at %></p>
+                <p class="user-list-post"><%= users.post %></p>
+                <form method="post" action="/deletePost">
+                    <input type="hidden" name="postId" value="<%= users.postId %>">
+                    <button type="submit" id="btnDelete">Delete</button>
+                </form>
+            </li>
+        <% }); %>
     </ul>
 </section>
 <footer>
