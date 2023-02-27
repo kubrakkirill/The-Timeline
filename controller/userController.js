@@ -22,15 +22,15 @@ const addPost = (request, response) => {
             console.log(error)
         })
 }
-const deletePost = (req, res) => {
-    const postId = req.body.postId;
+const deletePost = (request, response) => {
+    const postId = request.body.postId;
     userModel.findByIdAndRemove(postId, (err) => {
         if (err) {
             console.log(err);
-            res.status(500).send('Error deleting post');
+            response.status(500).send('Error deleting post');
         } else {
             console.log('Post deleted');
-            res.redirect('/')
+            response.redirect('/')
         }
     });
 };
